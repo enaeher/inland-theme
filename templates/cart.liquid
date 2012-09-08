@@ -1,0 +1,75 @@
+<div id="page-content">
+
+  <h2>Shopping Cart</h2>
+
+  {% if cart.items == empty %} 
+  <p class="empty">Your shopping cart is empty. Check out our <a href="/collections/all">catalog</a> to see what's available.</p>
+
+  {% else %}
+  <form action="/cart" method="post" id="cartform" class="clearfix">
+
+    <table id="cart">
+      
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for item in cart.items %}
+        <tr class="{% cycle 'odd', 'even' %}">
+          <td>
+            <a href="{{ item.product.url }}">
+              <img src="{{ item.product.featured_image | product_img_url: 'thumb' }}"  alt="{{ item.product.title }}" />
+            </a>
+          </td>
+          <td> <a href="{{ item.product.url }}">{{ item.title }}</a></td>
+          <td>{{ item.price | money }}</td>
+          <td class="quantity"> <input class="quantity" type="text" size="2" id="updates_{{ item.id }}" name="updates[{{ item.id }}]" value="{{ item.quantity }}"/> </td>
+          <td>{{ item.line_price | money }}</td>
+          <td><a class="remove-from-cart" href="/cart/change?id={{ item.id }}&quantity=0">&#x2a2f;</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      
+      <tfoot>
+        <tr class="footer">
+          <td colspan="3"></td>
+          <td><input type="submit" name="update" value="Update quantities" /></td>
+          <td>{{ cart.total_price | money }}</td>
+          <td>&nbsp;</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    {% if settings.allow_note %}
+    <div>
+      <p>
+	<label for="note">Please enter any special instructions regarding this order&mdash;or any suggestions regarding our store or products.</label>
+      </p>
+      <p>
+	<textarea id="note" name="note" class="hide">{{ cart.note }}</textarea>
+      </p>
+    </div>
+    {% endif %}
+
+    <div id="checkout-proceed">
+      <input type="submit" id="update-cart" name="checkout" value="Proceed to Checkout" />
+      {% if additional_checkout_buttons %}
+      <br><br>
+        &mdash;or check out using&mdash;
+      <br><br>
+        {{ content_for_additional_checkout_buttons }}
+      {% endif %}                       
+    </div>
+
+  </form>
+  {% endif %}
+
+</div>

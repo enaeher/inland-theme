@@ -1,0 +1,48 @@
+<div id="product-content">
+  <div id="product-column">
+    <div id="product-photos">
+      {% for image in product.images %}
+      {% unless forloop.first %}
+      <a href="{{ image | product_img_url: 'original' }}" title="{{ image.alt | escape }}" target="inland_image_{{ forloop.index }}">
+	<img src="{{ image | product_img_url: 'large' }}" alt="{{ image.alt | escape }}">
+      </a>
+      {% endunless %}
+      {% endfor %}
+    </div>
+
+    <div id="product-description">
+      <h3>{{ product.title }}</h3>
+
+      {% if settings.show_vendor %}{{ product.vendor }}{% endif %}
+      <form action="/cart/add" method="post" class="variants" id="product-actions">
+	<p class="purchase">
+	  {% if product.price_varies %}
+	  {{ product.price_min | money }}-{{ product.price_max | money }}
+	  {% else %}
+	  {{ product.price_min | money }}
+	  {% endif %}
+	  &mdash;
+
+	  {% if product.available %}	
+          <span{% if product.variants.size == 1 %} class="single-variant"{% endif %}> 
+            <select id="product-select" name="id">
+              {% for variant in product.variants %}
+              <option value="{{ variant.id }}">{{ variant.title | escape }}{% if product.price_varies %} - {{ variant.price | money }}{% endif %}</option>
+              {% endfor %}
+            </select>
+	    &mdash;
+          </span>
+	  <input type="submit" name="add" id="add-to-cart" value="Add to Cart" />
+	  {% else %}
+	  Sold out.
+	  {% endif %}
+	</p>
+      </form>
+      
+      <p>
+	{{ product.description }}
+      </p>
+      {% include 'makers' %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  {{ content_for_header }}
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  {{ 'normalize.css' | asset_url | stylesheet_tag }}
+  {{ 'main.css' | asset_url | stylesheet_tag }}
+  {{ 'fonts.css' | asset_url | stylesheet_tag }}
+  {{ 'jquery.throttledresize.js' | asset_url | script_tag }}
+  {{ 'detect-zoom.js' | asset_url | script_tag }}
+  {{ 'justify.js' | asset_url | script_tag }}
+  {{ 'track-zoom-level.js' | asset_url | script_tag }}
+  <title>{{ shop.name }} - {{ page_title }}</title>
+  <meta name="google-site-verification" content="v2DO9ziDf4ikaWFKFKd6M1GWsqe-PTngKouLZo74Xc0" />
+</head>
+<body>
+
+<div id="cart-header">
+  <div id="cart-container">
+    <p class="flat-rate">$5 Flat Rate US Shipping</p>
+    <p class="cart">
+      {% if shop.customer_accounts_enabled %}
+        {% if customer  %}
+          <a href="/account">Welcome {{ customer.first_name }}</a> | {{ "Logout" | customer_logout_link }}
+        {% else %}
+          {{ "Login" | customer_login_link }}
+        {% endif %}
+      {% endif %}
+	  | Cart:
+      <a href="/cart">
+	{{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}
+      </a>
+    </p>
+    <p class="made-in-usa">Everything Made in the USA</p>
+  </div>
+</div>
+
+{{ content_for_layout }}
+
+{% include 'menu' %}
+
+</body>
+</html>

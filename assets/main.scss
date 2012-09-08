@@ -1,0 +1,438 @@
+/* colors */
+
+$yellow: #ffcc04;
+$gray: #444;
+$lightgray: #eee;
+$input: $lightgray;
+$gradiant-percentage: 90%;
+
+body { 
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black;
+  font-family: 'LTCTwentiethCenturyMedium','Helvetica',sans-serif;
+  font-size: 16pt;
+  margin: 10px 5px 10px 5px;
+}
+
+/* main styles */
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 2pt;
+}
+
+p {
+  font-weight: normal;
+  margin: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  letter-spacing: 2pt;
+}
+
+a { 
+  color: inherit;
+  text-decoration: none;
+  &:hover { 
+    text-decoration: underline;
+  }
+}
+
+img { 
+  margin: 0;
+  padding: 0;
+}
+
+/* justified block layout stuff for collection pages */
+
+@mixin justify-block { 
+  font-weight: bold;
+  margin: 5px;
+  height: 300px;
+  float: left;
+  overflow: hidden;
+  position: relative; 
+  width: 3in;
+  
+  p {
+    margin: 1em;
+    font-weight: normal;
+  }
+}
+
+.product, .exhortation, #spacer {
+  @include justify-block;
+}
+
+.product { 
+  img {
+    position: relative
+  }
+
+  .caption {
+    position: absolute;
+    margin: 1em;
+    max-width: 3.5in;
+    background-color: $yellow;
+    padding: 1em;
+    padding-bottom: 4em;
+    opacity: 0;
+
+    .price {
+      position: absolute;
+      font-size: 1.2em;
+      left: .83em;
+      bottom: .83em;
+      background-color: black;
+      color: white;
+      padding: .2em;
+      padding-left: .5em;
+      padding-right: .5em;
+      border-radius: .83em .83em .83em .83em;
+    }
+
+    .vendor {
+      display: block;
+      font-size: .8em;
+    }   
+  }
+
+  .caption.left { 
+    left: 0;
+  }
+
+  .caption.right { 
+    left: auto;
+    right: 0;
+    text-align: right;
+    border-radius: 1em 0 1em 1em;
+  }
+
+  .caption.top { 
+    top: 0;
+  }
+
+  .caption.bottom { 
+    top: auto;
+    bottom: 0;
+    border-radius: 1em 1em 1em 0;
+  }
+
+  .caption.top.left {
+    border-radius: 0 1em 1em 1em;
+  }
+
+  .caption.top.right {
+    border-radius: 1em 0 1em 1em;
+  }
+
+  .caption.bottom.right {
+    border-radius: 1em 1em 0 1em;
+  }
+
+  .caption.bottom.left {
+    border-radius: 1em 1em 1em 0;
+  }
+
+  &:hover .caption {
+    opacity: 1;
+    .details {
+      color: #522;
+    }
+  }
+}
+
+.exhortation, #spacer { 
+  background-color: $yellow;
+}
+
+
+/* header with cart and promo text */
+
+#cart-header {
+  margin: 5px;
+  left: 0;
+  right: 0;
+
+  #cart-container { 
+    float: left;
+    width: 100%;
+    background-color: $lightgray;
+    margin-bottom: 5px;
+    z-index: -2;
+
+    p {
+      margin: 1em;
+      margin-top: .5em;
+      margin-bottom: .5em;
+    }
+
+    p.flat-rate {
+      float: left;
+    }
+
+    p.made-in-usa { 
+      text-align: center;
+      padding: 0 25% 0 25%;
+    }
+    
+    p.cart { 
+      float: right;
+      text-align: right;
+      z-index: 5;
+    }
+  }
+}
+
+/* bottom bar with logo and menu */
+
+#bottom-bar { 
+  position: fixed;
+  bottom: 0;
+  color: black; 
+  background-color: white;
+  border: 10px solid white;
+  border-top-width: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  padding: .25in;
+  padding-left: .5in;
+  padding-right: .5in;
+  padding-top: .5in;
+  text-align: left;
+  right: 0;
+  left: 0;
+
+  background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) $gradiant-percentage); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop($gradiant-percentage,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) $gradiant-percentage); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) $gradiant-percentage); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) $gradiant-percentage); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) $gradiant-percentage); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+  h2 { 
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    float: left;
+    color: $gray;
+  }
+
+  img {
+    vertical-align: baseline;
+  }
+
+  #menu {
+    display: block;
+    float: left;
+    text-align: right;
+    float: right;
+    height: 68px; /* same as logo */
+    width: 6.5in;
+    position: relative;
+
+    #menu-container { 
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      #mailchimp {
+	margin-bottom: .5em;
+      }
+
+      #menu-list {
+	padding-right: .5em;
+	display: inline;
+	
+	li {
+	  margin: 0;
+	  padding: 0;
+	  display: inline;
+	  text-indent: 0;
+
+	  a {
+	    padding-right: .5em;
+	    padding-left: .5em;
+	    border-radius: .83em .83em .83em .83em;
+
+	    &:hover {
+	      background-color: $yellow;  
+	    }
+	  }
+	}
+      }
+      
+    }
+    
+
+  }
+
+}
+
+#bottom-bar-spacer { 
+  float: none;
+  clear: both;
+  height: 1.5in;
+}
+
+/* styles used on non-collection pages */
+
+@mixin body-page {
+  font-size: 14pt;
+  p, li, div {
+    letter-spacing: 0;
+  }
+}
+
+/* pages */
+
+#page-content {
+  @include body-page;
+  float: left;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+/* shopping cart */
+
+#cart {
+  
+  width: 100%;
+  
+  .odd { 
+    background-color: $lightgray;
+  }
+  
+  td { 
+    padding-left: .5em;
+    padding-right: .5em;
+  }
+
+  td.quantity {
+    text-align: center;
+  }
+
+  .remove-from-cart {
+    color: #c00;
+  }
+
+  .footer {
+    td {
+      padding-top: 1em;
+    }
+  }
+}
+
+#checkout-proceed {
+  width: 100%;
+  text-align: center;
+}
+
+textarea#note {
+  width: 100%;
+}
+
+input.quantity { 
+  text-align: center;
+  width: 2em;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+select,
+textarea {
+  border-width: 0;
+  background-color: $input;
+  border: 2px solid white;
+  border-radius: 1em;
+  padding-left: .5em;
+  padding-right: .5em;
+}
+
+input[type=submit] { 
+  background-color: $yellow;
+  border: 2px solid $yellow;
+  border-radius: 1em;
+  
+  &:active {
+    background-color: white;
+  }
+}
+
+@mixin login-form {
+  float: left;
+  clear: both;
+
+  label {
+    float: left;
+    clear: left;
+    text-align: right;
+    margin-bottom: .5em;
+    margin-right: .5em;
+    width: 2in;
+  }
+  
+  input[type=email],
+  input[type=text],
+  input[type=password] {
+    float: left;
+  }
+
+  input[type=submit] {
+    float: right;
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+#customer-login, #recover-password {
+  @include login-form;
+}
+
+#product-content {
+  float: left;
+  width: 100%;
+  margin-top: 5px;
+  @include body-page;
+
+  #product-column {
+    margin-left: auto;
+    width: 970px;
+    margin-right: auto;
+
+    #product-photos {
+      float: left;
+      text-align: right;
+      width: 480px;
+      img {
+	margin-bottom: 5px;
+      }
+    }
+    
+    #product-description {
+      float: left;
+      width: 480px;
+      margin-left: 10px;
+
+      h3 {
+	margin: 0;
+      }
+      
+      .single-variant {
+	display: none;
+      }
+
+      tr:nth-child(even) {
+	  background-color: $lightgray;
+      }
+
+      tr:nth-child(odd) {
+	  background-color: white;
+      }
+
+    }
+  }
+}

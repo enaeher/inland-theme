@@ -1,0 +1,21 @@
+<div id="bottom-bar">
+  <h2><a href="/"><img src="{{ 'logo.png' | asset_url }}"></a></h2>
+  <div id="menu">
+    <div id="menu-container">
+      {% include 'mailchimp' %}
+      <ul id="menu-list">
+	{% for link in linklists.main-menu.links %}
+	<li class="{% if forloop.first %}first{% elsif forloop.last %}last{%endif%}">
+	  <a href="{{ link.url }}">{{ link.title | escape | downcase }}</a>
+	</li>
+	{% endfor %}
+      </ul>
+      
+      <a href="http://facebook.com/InlandClothing"><img src="{{ 'fb.png' | asset_url }}" alt="Facebook page" class="sharing-icon"></a>
+    </div>
+  </div>
+</div>
+
+<div id="bottom-bar-spacer">
+  &nbsp;
+</div>

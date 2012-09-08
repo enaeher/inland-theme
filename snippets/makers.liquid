@@ -1,0 +1,32 @@
+<h2>Maker</h2>
+{% if product.vendor == 'Faribault Woolen Mill' %}
+<p>
+  The Faribault Woolen Mill in Faribault, Minnesota, opened in 1865 and closed in 2009. But unlike so many other shuttered factories across the midwest, the mill reopened in 2011 after its purchase by a local family. These scarves are produced in the same facility, on the same equipment, and by some of the same employees as the original Faribault Woolen Mill which at one time made more than half of the wool blankets sold in the US.
+</p>
+{% elsif product.vendor == 'Port Canvas Company' %}
+<p>
+  The Port Canvas Company has been making canvas bags in Maine since 1968, first in Kennebunkport and now in Arundel. It remains a small, family-owned company, and each bag is still sewn entirely by one person (whose initials you'll find on the reverse of the label). If you find yourself in Maine you can stop by the Port Canvas factory and store and see how their bags are made.
+</p>
+  {% elsif product.vendor == 'Bartlett Yarns' %}
+<p>
+  Bartlett Yarns has been spinning wool in Harmony, Maine (population 939) since 1821, and when you see their wool you'll undertand why they've stayed in business. Just as it has done since its founding, the mill continues to take in raw wool from small shepherds. After spinning and dying, much of this wool is sold (or returned to the shepherd!) as yarn, but a portion of it is knit into these wonderful sweaters.
+</p>
+<p>Here is a video of the Bartlett spinning mule in action:</p>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/CG2hG1SLdoQ" frameborder="0" allowfullscreen></iframe>
+  {% elsif product.vendor == 'Labonville, Inc.' %}
+<p>
+  Labonville, Inc. is a small independent manufacturer based in the White Mountains of New Hampshire that has been supplying the logging industry since 1953. It was founded by Dolores and Emilien Labonville, Canadian immigrants and loggers.
+</p>
+{% elsif product.vendor == 'L.C. King Manufacturing Company' %}
+<p>
+  The L.C. King Manufacturing Company of Bristol, Tennessee was founded in 1913 by Landon Clayton ("L.C.") King. The company continues to produce Pointer Brand workwear (named for L.C. King's favorite Pointer bird dog) today, operating out of its original location. It remains family-owned by King's descendents.
+</p>
+{% elsif product.vendor == 'Queen Cutlery' %}
+<p>
+  Queen Cutlery is one of a few knifemakers still making traditional folding knives in the US. It was founded in 1922 by former employees of the legendary Schatt and Morgan Cutlery Company&mdash;and when Schatt and Morgan went bankrupt a few years later, Queen bought up its buildings and tooling. Even today, Queen still uses some of the Schatt and Morgan equipment. The company's motto: The Queen Cutlery branded knife is the finest built user knife on the market. <i>That will never change!</i>
+</p>
+{% elsif product.vendor == 'Shuron' %}
+<p>
+  In business since 1865, South-Carolina-based Shuron continues to thrive by selling the same classic frames upon which it built its reputation&mdash;like the Ronsir, the original combination frame, which sold its 16 millionth unit in 1971. 
+</p>
+  {% endif %}
