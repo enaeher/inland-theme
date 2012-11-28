@@ -64,6 +64,16 @@ img {
   @include justify-block;
 }
 
+.product.unavailable {
+  opacity: .5;
+  filter: alpha(opacity=40);
+  -webkit-filter: grayscale(90%);
+  -moz-filter: grayscale(90%);
+  -o-filter: grayscale(90%);
+  -ms-filter: grayscale(90%);
+  filter: grayscale(90%);
+}
+
 .product { 
   img {
     position: relative
@@ -76,7 +86,7 @@ img {
     background-color: $yellow;
     padding: 1em;
     padding-bottom: 4em;
-    opacity: 0;
+    display: none;
 
     .price {
       position: absolute;
@@ -135,7 +145,7 @@ img {
   }
 
   &:hover .caption {
-    opacity: 1;
+      display: block;
     .details {
       color: #522;
     }
@@ -158,6 +168,8 @@ img {
     float: left;
     width: 100%;
     background-color: $lightgray;
+    background-image: url('header-leaves.jpg');
+    color: black;
     margin-bottom: 5px;
     z-index: -2;
 
@@ -229,7 +241,7 @@ img {
     text-align: right;
     float: right;
     height: 68px; /* same as logo */
-    width: 6.5in;
+    width: 7in;
     position: relative;
 
     #menu-container { 
@@ -431,6 +443,12 @@ input[type=submit] {
 
       tr:nth-child(odd) {
 	  background-color: white;
+      }
+
+      img.makers-mark {
+	  float: right;
+	  margin-left: 10px;
+	  margin-bottom: 10px;
       }
 
     }

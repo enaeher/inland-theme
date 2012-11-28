@@ -2,14 +2,20 @@
 
 <div id="products">
   {% for product in collection.products %}
-  <div class="product">
+  <div class="product{% unless product.available %} unavailable {% endunless %}">
     <a href="{{ product.url }}" title="{{ product.title }}">
       <img src="{{ product.images.first | product_img_url: 'original' }}" alt="{{ product.title }}">
       <span class="caption {% cycle 'top left', 'bottom right', 'top right', 'bottom left' %}">
 	{{ product.title }}
 	<span class="vendor">{{ product.vendor }}</span
 	<br>
-	<span class="price">{{ product.price | money }}</span>
+	<span class="price">
+	  {% if product.available %}
+	  {{ product.price | money }}
+	  {% else %}
+	  Sold Out
+	  {% endif %}
+	</span>
       </span>
     </a>
   </div>

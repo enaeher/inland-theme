@@ -1,6 +1,7 @@
 <h2>Maker</h2>
 {% if product.vendor == 'Faribault Woolen Mill' %}
 <p>
+  <img class="makers-mark" src="{{ 'faribault.jpg' | asset_url }}"/>
   The Faribault Woolen Mill in Faribault, Minnesota, opened in 1865 and closed in 2009. But unlike so many other shuttered factories across the midwest, the mill reopened in 2011 after its purchase by a local family. These scarves are produced in the same facility, on the same equipment, and by some of the same employees as the original Faribault Woolen Mill which at one time made more than half of the wool blankets sold in the US.
 </p>
 {% elsif product.vendor == 'Port Canvas Company' %}
@@ -15,6 +16,7 @@
 <iframe width="420" height="315" src="http://www.youtube.com/embed/CG2hG1SLdoQ" frameborder="0" allowfullscreen></iframe>
   {% elsif product.vendor == 'Labonville, Inc.' %}
 <p>
+  <img class="makers-mark" src="{{ 'labonville.png' | asset_url }}"/>
   Labonville, Inc. is a small independent manufacturer based in the White Mountains of New Hampshire that has been supplying the logging industry since 1953. It was founded by Dolores and Emilien Labonville, Canadian immigrants and loggers.
 </p>
 {% elsif product.vendor == 'L.C. King Manufacturing Company' %}
@@ -23,10 +25,30 @@
 </p>
 {% elsif product.vendor == 'Queen Cutlery' %}
 <p>
+  <img class="makers-mark" src="{{ 'queen.png' | asset_url }}"/>
   Queen Cutlery is one of a few knifemakers still making traditional folding knives in the US. It was founded in 1922 by former employees of the legendary Schatt and Morgan Cutlery Company&mdash;and when Schatt and Morgan went bankrupt a few years later, Queen bought up its buildings and tooling. Even today, Queen still uses some of the Schatt and Morgan equipment. The company's motto: The Queen Cutlery branded knife is the finest built user knife on the market. <i>That will never change!</i>
 </p>
 {% elsif product.vendor == 'Shuron' %}
 <p>
   In business since 1865, South-Carolina-based Shuron continues to thrive by selling the same classic frames upon which it built its reputation&mdash;like the Ronsir, the original combination frame, which sold its 16 millionth unit in 1971. 
 </p>
-  {% endif %}
+{% elsif product.vendor == 'Individualized Shirts' %}
+<p>
+  In 1961 Individualized Shirts started out making shirts to order for small specialty men's stores. Today, it remains one of the most capable small-batch American shirtmakers, supplying shops large and small with high-quality private-label and made-to-order shirts&mdash;yet they are rarely seen under its own name in the US. That's a shame, because they make some great shirts. So we're proud to bring you this collection of shirts made especially for Inland Clothing and carrying the Individualized label.
+</p>
+{% elsif product.vendor == 'Two Feet Ahead' %}
+<p>
+  <img class="makers-mark" src="{{ 'twofeetahead.png' | asset_url }}"/>
+  Two Feet Ahead is a label of the Atlanta Hosiery Company, which has been owned and operated by three generations of the same family since its founding in 1935.
+</p>
+{% elsif product.vendor == "Don't Mourn, Organize!" %}
+<p>
+  <img class="makers-mark" src="{{ 'dontmournorganize.png' | asset_url }}"/>
+  Don't Mourn, Organize! is a maker of leather goods based in Springville, Utah. It takes its name from the last words of the Wobbly labor organizer Joe Hill, executed by the state of Utah for a murder he didn't commit, and "strives to create leather goods in the spirit of the labor movement." Using traditional methods and the best-quality materials available, Don't Mourn, Organize! turns out belts that will last a lifetime.
+</p>
+{% elsif product.vendor == 'Domestic Workwear' %}
+<p>
+  <img class="makers-mark" src="{{ 'domestic-workwear.png' | asset_url }}"/>
+  Daniel Evans, the founder of Domestic Workwear, was working as a mover and wasn't satisfied with the work pants he could find on the market; they were cheaply made and they didn't hold up. So he decided to make his own. All Domestic Workwear pants are made here in Chicago, IL, in a family-owned factory on Chicago's West Side with many years of experience in uniform and workwear manufacturing.
+</p>
+{% endif %}

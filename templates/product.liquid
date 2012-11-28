@@ -22,12 +22,25 @@
 	  {{ product.price_min | money }}
 	  {% endif %}
 	  &mdash;
-
 	  {% if product.available %}	
           <span{% if product.variants.size == 1 %} class="single-variant"{% endif %}> 
             <select id="product-select" name="id">
               {% for variant in product.variants %}
-              <option value="{{ variant.id }}">{{ variant.title | escape }}{% if product.price_varies %} - {{ variant.price | money }}{% endif %}</option>
+              <option value="{{ variant.id }}"
+		      {% unless variant.available %}disabled{% endunless %}>
+		{% for option in product.options %}
+		{% if option contains "Size" %}
+		{% if forloop.index == 1 %}
+		{{ variant.option1 | escape }}
+		{% else %}
+		{{ variant.option2 | escape }}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
+		{% if product.price_varies %}
+		- {{ variant.price | money }}
+		{% endif %}
+		{% unless variant.available %} (sold out){% endunless %}
               {% endfor %}
             </select>
 	    &mdash;

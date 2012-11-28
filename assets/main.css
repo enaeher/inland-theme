@@ -42,6 +42,15 @@ img {
     margin: 1em;
     font-weight: normal; }
 
+.product.unavailable {
+  opacity: .5;
+  filter: alpha(opacity=40);
+  -webkit-filter: grayscale(90%);
+  -moz-filter: grayscale(90%);
+  -o-filter: grayscale(90%);
+  -ms-filter: grayscale(90%);
+  filter: grayscale(90%); }
+
 .product img {
   position: relative; }
 .product .caption {
@@ -51,7 +60,7 @@ img {
   background-color: #ffcc04;
   padding: 1em;
   padding-bottom: 4em;
-  opacity: 0; }
+  display: none; }
   .product .caption .price {
     position: absolute;
     font-size: 1.2em;
@@ -88,7 +97,7 @@ img {
 .product .caption.bottom.left {
   border-radius: 1em 1em 1em 0; }
 .product:hover .caption {
-  opacity: 1; }
+  display: block; }
   .product:hover .caption .details {
     color: #522; }
 
@@ -104,6 +113,8 @@ img {
     float: left;
     width: 100%;
     background-color: #eeeeee;
+    background-image: url("header-leaves.jpg");
+    color: black;
     margin-bottom: 5px;
     z-index: -2; }
     #cart-header #cart-container p {
@@ -166,7 +177,7 @@ img {
     float: right;
     height: 68px;
     /* same as logo */
-    width: 6.5in;
+    width: 7in;
     position: relative; }
     #bottom-bar #menu #menu-container {
       position: absolute;
@@ -300,3 +311,7 @@ input[type=submit] {
         background-color: #eeeeee; }
       #product-content #product-column #product-description tr:nth-child(odd) {
         background-color: white; }
+      #product-content #product-column #product-description img.makers-mark {
+        float: right;
+        margin-left: 10px;
+        margin-bottom: 10px; }
