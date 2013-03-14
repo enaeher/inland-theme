@@ -96,4 +96,5 @@ function justify () {
       spacer.width(containerWidth - 3 - (scaledWidth + totalMargins + horizontalMargins));
     }
   }
+  $products.removeClass ('hidden');
 }

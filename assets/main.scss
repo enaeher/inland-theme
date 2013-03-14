@@ -5,6 +5,10 @@ $gray: #444;
 $lightgray: #eee;
 $input: $lightgray;
 $gradiant-percentage: 90%;
+$navy: #04102a;
+
+$contrast-background: $navy;
+$contrast-foreground: white;
 
 body { 
   margin: 0;
@@ -43,6 +47,43 @@ img {
   padding: 0;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+/* state glyphs */
+
+.state-glyph {
+  font-family: 'StateFaceRegular';
+}
+
+.stateface-us {
+  display: inline-block;
+  position: relative;
+  text-indent: -999em;
+  vertical-align: middle;
+}
+
+.stateface-us:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-indent: 0;
+  content: "z";
+  color: #7d0000;
+}
+
+/* sales/markdowns */
+
+.old-price {
+  text-decoration: line-through;
+}
+
+.new-price {
+  color: red;
+}
+
+
 /* justified block layout stuff for collection pages */
 
 @mixin justify-block { 
@@ -74,7 +115,7 @@ img {
   filter: grayscale(90%);
 }
 
-.product { 
+.product {
   img {
     position: relative
   }
@@ -83,22 +124,32 @@ img {
     position: absolute;
     margin: 1em;
     max-width: 3.5in;
-    background-color: $yellow;
+    background-color: $contrast-background;
+    color: $contrast-foreground;
     padding: 1em;
     padding-bottom: 4em;
     display: none;
+
+    .state-glyph {
+      color: $lightgray;
+      font-size: 24pt;
+      position: absolute;
+      bottom: .83em;
+      right: .83em;
+    }
 
     .price {
       position: absolute;
       font-size: 1.2em;
       left: .83em;
       bottom: .83em;
-      background-color: black;
-      color: white;
+      background-color: $lightgray;
+      color: black;
       padding: .2em;
       padding-left: .5em;
       padding-right: .5em;
       border-radius: .83em .83em .83em .83em;
+
     }
 
     .vendor {
@@ -153,7 +204,8 @@ img {
 }
 
 .exhortation, #spacer { 
-  background-color: $yellow;
+  background-color: $contrast-background;
+  color: $contrast-foreground;
 }
 
 
@@ -168,7 +220,7 @@ img {
     float: left;
     width: 100%;
     background-color: $lightgray;
-    background-image: url('header-leaves.jpg');
+/*    background-image: url('header-leaves-desaturated.jpg'); */
     color: black;
     margin-bottom: 5px;
     z-index: -2;
@@ -186,6 +238,9 @@ img {
     p.made-in-usa { 
       text-align: center;
       padding: 0 25% 0 25%;
+      margin: 0;
+      margin-top: .1em;
+      font-size: 24pt;
     }
     
     p.cart { 
@@ -241,7 +296,7 @@ img {
     text-align: right;
     float: right;
     height: 68px; /* same as logo */
-    width: 7in;
+    width: 7.25in;
     position: relative;
 
     #menu-container { 
@@ -256,7 +311,11 @@ img {
       #menu-list {
 	padding-right: .5em;
 	display: inline;
-	
+
+	.red {
+	    color: red;
+	}
+
 	li {
 	  margin: 0;
 	  padding: 0;
@@ -269,7 +328,8 @@ img {
 	    border-radius: .83em .83em .83em .83em;
 
 	    &:hover {
-	      background-color: $yellow;  
+	      background-color: $contrast-background;
+	      color: $contrast-foreground;
 	    }
 	  }
 	}
@@ -364,12 +424,14 @@ textarea {
 }
 
 input[type=submit] { 
-  background-color: $yellow;
-  border: 2px solid $yellow;
+  background-color: $contrast-background;
+  color: $contrast-foreground;
+  border: 2px solid $contrast-background;
   border-radius: 1em;
   
   &:active {
-    background-color: white;
+    background-color: $contrast-foreground;
+    color: $contrast-background;
   }
 }
 
@@ -418,7 +480,8 @@ input[type=submit] {
     #product-photos {
       float: left;
       text-align: right;
-      width: 480px;
+      width: 260px;
+      min-height: 1px;
       img {
 	margin-bottom: 5px;
       }

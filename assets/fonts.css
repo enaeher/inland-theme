@@ -25,3 +25,16 @@
     font-style: normal;
 
 }
+
+/* taken from Font Squirrel by way of http://propublica.github.com/stateface/ */
+
+@font-face {
+    font-family: 'StateFaceRegular';
+    src: url('stateface-regular-webfont.eot');
+    src: url('stateface-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('stateface-regular-webfont.woff') format('woff'),
+         url('stateface-regular-webfont.ttf') format('truetype'),
+         url('stateface-regular-webfont.svg#StateFaceRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

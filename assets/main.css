@@ -29,6 +29,34 @@ img {
   margin: 0;
   padding: 0; }
 
+.hidden {
+  visibility: hidden; }
+
+/* state glyphs */
+.state-glyph {
+  font-family: 'StateFaceRegular'; }
+
+.stateface-us {
+  display: inline-block;
+  position: relative;
+  text-indent: -999em;
+  vertical-align: middle; }
+
+.stateface-us:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-indent: 0;
+  content: "z";
+  color: #7d0000; }
+
+/* sales/markdowns */
+.old-price {
+  text-decoration: line-through; }
+
+.new-price {
+  color: red; }
+
 /* justified block layout stuff for collection pages */
 .product, .exhortation, #spacer {
   font-weight: bold;
@@ -57,17 +85,24 @@ img {
   position: absolute;
   margin: 1em;
   max-width: 3.5in;
-  background-color: #ffcc04;
+  background-color: #04102a;
+  color: white;
   padding: 1em;
   padding-bottom: 4em;
   display: none; }
+  .product .caption .state-glyph {
+    color: #eeeeee;
+    font-size: 24pt;
+    position: absolute;
+    bottom: .83em;
+    right: .83em; }
   .product .caption .price {
     position: absolute;
     font-size: 1.2em;
     left: .83em;
     bottom: .83em;
-    background-color: black;
-    color: white;
+    background-color: #eeeeee;
+    color: black;
     padding: .2em;
     padding-left: .5em;
     padding-right: .5em;
@@ -102,7 +137,8 @@ img {
     color: #522; }
 
 .exhortation, #spacer {
-  background-color: #ffcc04; }
+  background-color: #04102a;
+  color: white; }
 
 /* header with cart and promo text */
 #cart-header {
@@ -113,7 +149,7 @@ img {
     float: left;
     width: 100%;
     background-color: #eeeeee;
-    background-image: url("header-leaves.jpg");
+    /*    background-image: url('header-leaves-desaturated.jpg'); */
     color: black;
     margin-bottom: 5px;
     z-index: -2; }
@@ -125,7 +161,10 @@ img {
       float: left; }
     #cart-header #cart-container p.made-in-usa {
       text-align: center;
-      padding: 0 25% 0 25%; }
+      padding: 0 25% 0 25%;
+      margin: 0;
+      margin-top: .1em;
+      font-size: 24pt; }
     #cart-header #cart-container p.cart {
       float: right;
       text-align: right;
@@ -177,7 +216,7 @@ img {
     float: right;
     height: 68px;
     /* same as logo */
-    width: 7in;
+    width: 7.25in;
     position: relative; }
     #bottom-bar #menu #menu-container {
       position: absolute;
@@ -188,6 +227,8 @@ img {
       #bottom-bar #menu #menu-container #menu-list {
         padding-right: .5em;
         display: inline; }
+        #bottom-bar #menu #menu-container #menu-list .red {
+          color: red; }
         #bottom-bar #menu #menu-container #menu-list li {
           margin: 0;
           padding: 0;
@@ -198,7 +239,8 @@ img {
             padding-left: .5em;
             border-radius: .83em .83em .83em .83em; }
             #bottom-bar #menu #menu-container #menu-list li a:hover {
-              background-color: #ffcc04; }
+              background-color: #04102a;
+              color: white; }
 
 #bottom-bar-spacer {
   float: none;
@@ -254,11 +296,13 @@ textarea {
   padding-right: .5em; }
 
 input[type=submit] {
-  background-color: #ffcc04;
-  border: 2px solid #ffcc04;
+  background-color: #04102a;
+  color: white;
+  border: 2px solid #04102a;
   border-radius: 1em; }
   input[type=submit]:active {
-    background-color: white; }
+    background-color: white;
+    color: #04102a; }
 
 #customer-login, #recover-password {
   float: left;
@@ -296,7 +340,8 @@ input[type=submit] {
     #product-content #product-column #product-photos {
       float: left;
       text-align: right;
-      width: 480px; }
+      width: 260px;
+      min-height: 1px; }
       #product-content #product-column #product-photos img {
         margin-bottom: 5px; }
     #product-content #product-column #product-description {

@@ -5,7 +5,7 @@
       {% include 'mailchimp' %}
       <ul id="menu-list">
 	{% for link in linklists.main-menu.links %}
-	<li class="{% if forloop.first %}first{% elsif forloop.last %}last{%endif%}">
+	<li class="{% if forloop.first %}first{% elsif forloop.last %}last{%endif%} {% if link.title == 'Sale!' %}red{%endif%}">
 	  <a href="{{ link.url }}">{{ link.title | escape | downcase }}</a>
 	</li>
 	{% endfor %}

@@ -1,25 +1,35 @@
 <div id="product-content">
   <div id="product-column">
     <div id="product-photos">
-      {% for image in product.images %}
-      {% unless forloop.first %}
-      <a href="{{ image | product_img_url: 'original' }}" title="{{ image.alt | escape }}" target="inland_image_{{ forloop.index }}">
-	<img src="{{ image | product_img_url: 'large' }}" alt="{{ image.alt | escape }}">
+      {% for image in product.images offset:2 %}
+      <a href="{{ image | product_img_url: 'master' }}" title="{{ image.alt | escape }}" target="inland_image_{{ forloop.index }}">
+	<img src="{{ image | product_img_url: 'medium' }}" alt="{{ image.alt | escape }}">
       </a>
-      {% endunless %}
       {% endfor %}
     </div>
 
     <div id="product-description">
+      <a href="{{ product.images[1] | product_img_url: 'master' }}" title="{{ product.images[1].alt | escape }}" target="inland_image_main">
+	<img src="{{ product.images[1] | product_img_url: 'large' }}" alt="{{ product.images[1].alt | escape }}">
+      </a>
       <h3>{{ product.title }}</h3>
 
-      {% if settings.show_vendor %}{{ product.vendor }}{% endif %}
+      {% if settings.show_vendor %}{{ product.vendor | link_to_vendor }} ({% include 'states' %}){% endif %}
       <form action="/cart/add" method="post" class="variants" id="product-actions">
 	<p class="purchase">
 	  {% if product.price_varies %}
 	  {{ product.price_min | money }}-{{ product.price_max | money }}
 	  {% else %}
-	  {{ product.price_min | money }}
+  	    {% if product.variants.first.compare_at_price %}
+	    <span class="old-price">
+	      {{ product.compare_at_price_max | money }}
+	    </span>
+	    <span class="new-price">
+	      {{ product.price | money }}
+	    </span>
+            {% else %}
+	      {{ product.price | money }}
+            {% endif %}
 	  {% endif %}
 	  &mdash;
 	  {% if product.available %}	
